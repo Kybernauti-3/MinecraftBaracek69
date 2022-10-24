@@ -1,0 +1,6 @@
+name: MinecraftBaracek69
+version: '${project.version}'
+main: com.mates.minecraftbaracek69.MinecraftBaracek69
+api-version: 1.19
+authors: [ Mates, Z4CK ]
+description: Plugin na komunikaci s mqtt

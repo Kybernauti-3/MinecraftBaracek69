@@ -1,14 +1,12 @@
 from machine import Pin
-from utime import sleep
+import utime
 
-led = Pin(15,Pin.OUT)
+led = Pin(2, Pin.OUT)
 
+button = Pin(1,Pin.IN)
 
 while True:
-    control = input('''
-ovladani svetla: 
-[1] led switch
-''')
-
-    if(str(control) == "1"):
+    print(button.value())
+    if button.value()==1:
         led.toggle()
+        utime.sleep(0.2)

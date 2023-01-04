@@ -43,4 +43,4 @@ while True:
         Led_R.duty_u16(R)
         Led_G.duty_u16(G)
         Led_B.duty_u16(B) 
-        utime.sleep_ms(1000)
+        utime.sleep_ms(800)

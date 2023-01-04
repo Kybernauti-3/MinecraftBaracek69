@@ -8,3 +8,5 @@ V tomto projektu spojujeme RPi se servem, tlačítkem a ledkama
 Budeme používat: [MQTT](https://www.eclipse.org/paho/index.php?page=clients/java/index.php)
 
 https://www.youtube.com/watch?v=TDj2kcSA-68
+
+https://www.emqx.com/en/blog/how-to-use-mqtt-in-python

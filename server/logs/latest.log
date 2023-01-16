@@ -1,0 +1,60 @@
+[19:12:55] [ServerMain/INFO]: Building unoptimized datafixer
+[19:12:58] [ServerMain/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[19:13:03] [ServerMain/INFO]: Loaded 7 recipes
+[19:13:06] [Server thread/INFO]: Starting minecraft server version 1.19.2
+[19:13:06] [Server thread/INFO]: Loading properties
+[19:13:06] [Server thread/INFO]: This server is running Paper version git-Paper-196 (MC: 1.19.2) (Implementing API version 1.19.2-R0.1-SNAPSHOT) (Git: ff67f1f)
+[19:13:06] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[19:13:06] [Server thread/INFO]: Using 4 threads for Netty based IO
+[19:13:06] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
+[19:13:07] [Server thread/INFO]: Default game type: SURVIVAL
+[19:13:07] [Server thread/INFO]: Generating keypair
+[19:13:07] [Server thread/INFO]: Starting Minecraft server on *:25565
+[19:13:07] [Server thread/INFO]: Using default channel type
+[19:13:07] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[19:13:07] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[19:13:08] [Server thread/INFO]: [SkinsRestorer] Loading SkinsRestorer v14.2.3
+[19:13:08] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[19:13:08] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[19:13:08] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[19:13:08] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[19:13:08] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[19:13:08] [Server thread/INFO]: Preparing level "world"
+[19:13:09] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[19:13:09] [Server thread/INFO]: Time elapsed: 285 ms
+[19:13:09] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v14.2.3
+[19:13:10] [Server thread/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1mDetected Minecraft [33;1mv1_19_R1[32;1m, using [33;1mPaperSkinRefresher[32;1m.[0;39m
+[19:13:10] [Server thread/INFO]: [SkinsRestorer] [ACF] Enabled Asynchronous Tab Completion Support!
+[19:13:10] [Server thread/INFO]: Running delayed init tasks
+[19:13:10] [Server thread/INFO]: Done (4.774s)! For help, type "help"
+[19:13:10] [Server thread/INFO]: Timings Reset
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[GitHubUpdate] Downloading update...[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m----------------------------------------------[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m    +==================+[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m    |   SkinsRestorer  |[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m    |------------------|[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m    |  [34;1m[4m[21mStandalone Mode[0;39m[32;1m |[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m    +==================+[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m----------------------------------------------[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[36;1m    Current version: [31;1m14.2.3[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[36;1m    New version: [31;1m14.2.7[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m    A new version is available! Downloading it now...[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m    Update downloaded successfully, it will be applied on the next restart.[0;39m
+[19:13:12] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[32;1m----------------------------------------------[0;39m
+[19:13:16] [Server thread/INFO]: Plugins (1): SkinsRestorer
+[19:13:19] [Craft Scheduler Thread - 3 - SkinsRestorer/INFO]: [33;1m[[32;22mSkinsRestorer[33;1m] [0;39m[GitHubUpdate] Update saved as plugins\update\SkinsRestorer.jar[0;39m
+[21:05:54] [Server thread/INFO]: Stopping the server
+[21:05:54] [Server thread/INFO]: Stopping server
+[21:05:54] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v14.2.3
+[21:05:54] [Server thread/INFO]: Saving players
+[21:05:54] [Server thread/INFO]: Saving worlds
+[21:05:54] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[21:05:54] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[21:05:54] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[21:05:54] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[21:05:55] [Server thread/INFO]: [ChunkHolderManager] Saved 529 chunks in world 'world' in 0s
+[21:05:55] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[21:05:55] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[21:05:55] [Server thread/INFO]: Flushing Chunk IO
+[21:05:55] [Server thread/INFO]: Closing Thread Pool
+[21:05:55] [Server thread/INFO]: Closing Server

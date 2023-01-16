@@ -22,7 +22,7 @@ def main():
         pass
     print("pripojeno wajfaj")
     # Connect to MQTT broker
-    client = MQTTClient("Pico", broker)
+    client = MQTTClient("Pico", "147.228.121.4", port = 80)
     client.connect()
     print("pripojeno mqtt")
 

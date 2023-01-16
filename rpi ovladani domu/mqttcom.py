@@ -1,38 +1,45 @@
-#from housectrl import dvere_otevrit,dvere_zavrit
+from housectrl import dvere_otevrit,dvere_zavrit, door_switch
+from machine import Pin, PWM
+button = Pin(1, Pin.IN, Pin.PULL_DOWN)
 
 import network
 from umqtt.simple import MQTTClient
 
 # 147.228.121.4:80
 
-broker = 'broker.hivemq.com'
+#broker = 'broker.hivemq.com'
 topic = "minecraftbaracek"
 
 def on_message(topic, msg):
     print("Received message on topic: {}, with payload: {}".format(topic, msg))
-
+    if msg == "opendoor":
+        dvere_otevrit()
+    elif msg == "closedoor":
+        dvere_zavrit()
+    
 
 def main():
     # Connect to Wi-Fi
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
     wlan.connect("kokot", "minecraft69")
-    print("pripojuji wajfaj")
+    print("Pripojuji k WiFi...")
     while not wlan.isconnected():
         pass
-    print("pripojeno wajfaj")
+    print("Pripojeno k WiFi")
     # Connect to MQTT broker
-    client = MQTTClient("Pico", "147.228.121.4", port = 80)
+    client = MQTTClient("minecraftpico", "147.228.121.4", port = 80)
     client.connect()
-    print("pripojeno mqtt")
+    print("Pripojeno k MQTT")
 
-    # Publish a message to an MQTT topic
-    client.publish(topic, b"Hello, MQTT!")
-    #client.disconnect()
+    client.publish(topic, b"Pico connected")
+
+    client.subscribe(topic)
 
     while True:
-        # Check for incoming messages
-        #client.check_msg()
-        pass
+        client.check_msg()
+
+        if button.value():
+            stav = door_switch(stav)
 
 main()

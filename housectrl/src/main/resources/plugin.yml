@@ -1,0 +1,8 @@
+name: Housectrl
+version: '${version}'
+main: me.mates.housectrl.Housectrl
+api-version: 1.19
+authors: [ mates ]
+description: mq komunikace
+commands:
+  svetlo:

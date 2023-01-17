@@ -45,6 +45,9 @@ advancements:
   - minecraft:story/disabled
 world-settings:
   default:
+    seed-ancientcity: 20083232
+    seed-buriedtreasure: 10387320
+    seed-mineshaft: default
     below-zero-generation-in-existing-chunks: true
     end-portal-sound-radius: 0
     dragon-death-sound-radius: 0

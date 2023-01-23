@@ -1,5 +1,5 @@
-from housectrl import dvere_otevrit,dvere_zavrit, door_switch
-from machine import Pin, PWM
+#from housectrl import dvere_otevrit,dvere_zavrit, door_switch
+from machine import Pin
 button = Pin(1, Pin.IN, Pin.PULL_DOWN)
 
 import network
@@ -13,10 +13,12 @@ topic = "minecraftbaracek"
 def on_message(topic, msg):
     print("Received message on topic: {}, with payload: {}".format(topic, msg))
     if msg == "opendoor":
-        dvere_otevrit()
+        print("xd")
+        #dvere_otevrit()
     elif msg == "closedoor":
-        dvere_zavrit()
-    
+        print("lol")
+        #dvere_zavrit()
+
 
 def main():
     # Connect to Wi-Fi
@@ -28,7 +30,7 @@ def main():
         pass
     print("Pripojeno k WiFi")
     # Connect to MQTT broker
-    client = MQTTClient("minecraftpico", "147.228.121.4", port = 80)
+    client = MQTTClient("pico", "147.228.121.4", 80)
     client.connect()
     print("Pripojeno k MQTT")
 
@@ -39,7 +41,7 @@ def main():
     while True:
         client.check_msg()
 
-        if button.value():
-            stav = door_switch(stav)
+        #if button.value():
+         #   stav = door_switch(stav)
 
 main()

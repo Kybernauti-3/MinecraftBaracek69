@@ -15,7 +15,7 @@ public class MQTT {
 
     public static void SEND(String content) {
         if (content == null) return;
-        String topic        = "minecraftbaracek";
+        String topic = "minecraftbaracek";
 
         try {
             MqttClient sampleClient = plugin.getClient();

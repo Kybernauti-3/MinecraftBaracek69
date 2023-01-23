@@ -28,6 +28,7 @@ public final class Housectrl extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
             me.printStackTrace();
         }
+
         new MQTT(this);
 
         getCommand("svetlo").setExecutor(new svetlo());

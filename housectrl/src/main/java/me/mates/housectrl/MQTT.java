@@ -1,12 +1,9 @@
 package me.mates.housectrl;
 
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.bukkit.Bukkit;
+import org.eclipse.paho.client.mqttv3.*;
 
-public class MQTT {
+public class MQTT implements MqttCallback {
     private static Housectrl plugin;
 
     public MQTT(Housectrl housectrl) {
@@ -15,7 +12,8 @@ public class MQTT {
 
     public static void SEND(String content) {
         if (content == null) return;
-        String topic = "minecraftbaracek";
+
+        String topic = plugin.getConfig().getString("mqtt.topic");
 
         try {
             MqttClient sampleClient = plugin.getClient();
@@ -32,5 +30,21 @@ public class MQTT {
             System.out.println("excep "+me);
             me.printStackTrace();
         }
+    }
+
+    @Override
+    public void connectionLost(Throwable cause) {
+
+    }
+
+    @Override
+    public void messageArrived(String topic, MqttMessage message) {
+        System.out.println("topic " + topic);
+        System.out.println("message " + message);
+    }
+
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken token) {
+        System.out.println("token" + token);
     }
 }

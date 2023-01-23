@@ -15,8 +15,13 @@ public final class Housectrl extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        String broker       = "tcp://147.228.121.4:80";
-        String clientId     = "minecraftplugin";
+
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+
+        String broker       = getConfig().getString("mqtt.broker");
+        String clientId     = getConfig().getString("mqtt.clientID");
         try {
             System.out.println("Connecting to broker: " + broker);
             sampleClient = new MqttClient(broker, clientId, new MemoryPersistence());

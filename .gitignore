@@ -1,12 +1,28 @@
 # User-specific stuff
 housectrl/.idea/
 housectrl/.gradle/
+housectrl/graddlew
+housectrl/gradle.properties
+housectrl/gradlew.bat
+housectrl/setting.gradle
+
 
 housectrl/build/
 housectrl/gradle/
 
 housectrl/gradlew
 housectrl/gradlew.bat
+
+server/.console_history
+server/*.json
+server/commands.yml
+server/help.yml
+server/permissions.yml
+server/cache/
+server/config/
+server/libraries/
+server/logs/
+server/versions/
 
 *.iml
 *.ipr

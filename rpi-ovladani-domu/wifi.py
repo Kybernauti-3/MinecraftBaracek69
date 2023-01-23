@@ -8,8 +8,8 @@ led.value(0) # LED Off
 
 
 
-ssid = 'kokot'
-password = 'minecraft69'
+#ssid = 'kokot'
+#password = 'minecraft69'
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)

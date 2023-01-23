@@ -24,6 +24,9 @@ server/libraries/
 server/logs/
 server/versions/
 
+rpi-ovladani-domu\.vscode\
+
+
 *.iml
 *.ipr
 *.iws

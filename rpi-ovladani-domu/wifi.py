@@ -7,7 +7,8 @@ led.value(1) # LED On
 led.value(0) # LED Off
 
 
-
+ssid = "Jirankovi_O2_2,4GHz"
+password = "jirankovi7475"
 #ssid = 'kokot'
 #password = 'minecraft69'
 

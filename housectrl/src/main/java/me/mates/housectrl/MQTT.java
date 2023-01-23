@@ -19,9 +19,6 @@ public class MQTT {
 
         try {
             MqttClient sampleClient = plugin.getClient();
-            MqttConnectOptions connOpts = new MqttConnectOptions();
-            connOpts.setCleanSession(true);
-            sampleClient.connect(connOpts);
             System.out.println("Publishing message: "+content);
             MqttMessage message = new MqttMessage(content.getBytes());
             message.setQos(2);

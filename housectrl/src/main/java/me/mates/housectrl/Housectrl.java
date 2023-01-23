@@ -4,6 +4,7 @@ import me.mates.housectrl.commands.svetlo;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
@@ -19,6 +20,9 @@ public final class Housectrl extends JavaPlugin {
         try {
             System.out.println("Connecting to broker: " + broker);
             sampleClient = new MqttClient(broker, clientId, new MemoryPersistence());
+            MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setCleanSession(true);
+            sampleClient.connect(connOpts);
             System.out.println("Connected");
         } catch (MqttException me) {
             Bukkit.getPluginManager().disablePlugin(this);

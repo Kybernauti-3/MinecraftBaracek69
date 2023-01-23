@@ -1,0 +1,16 @@
+# User-specific stuff
+housectrl/.idea/
+housectrl/.gradle/
+
+housectrl/build/
+housectrl/gradle/
+
+housectrl/gradlew
+housectrl/gradlew.bat
+
+*.iml
+*.ipr
+*.iws
+
+# Compiled class file
+*.class

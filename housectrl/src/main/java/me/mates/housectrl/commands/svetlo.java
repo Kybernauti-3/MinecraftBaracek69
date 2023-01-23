@@ -18,7 +18,7 @@ public class svetlo implements CommandExecutor, TabExecutor {
             MQTT.SEND(args[0]);
             return true;
         }
-        System.out.println("test");
+        System.out.println("provide args pls");
         return true;
     }
 

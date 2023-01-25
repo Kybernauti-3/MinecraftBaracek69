@@ -65,7 +65,4 @@ def main():
 
     client.publish(topic, "Pico connected")
 
-    while True:
-        pass
-
 main()

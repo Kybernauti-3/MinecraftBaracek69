@@ -7,8 +7,8 @@ led = Pin("LED", Pin.OUT)
 led.value(1)
 led.value(0)
 
-jmenowifi = "Jirankovi_O2_2,4GHz"
-heslowifi = "jirankovi7475"
+jmenowifi = "kokot"
+heslowifi = "minecraft69"
 
 broker = "147.228.121.4"
 port = 80

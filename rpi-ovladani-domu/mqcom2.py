@@ -54,7 +54,7 @@ def main():
             time.sleep(0.5)
         
         status = wlan.ifconfig()
-        print( 'Pripojeno k ' + jmenowifi + ' ' + 'IP: ' + status[0] )
+        print('Pripojeno k ' + jmenowifi + ' ' + 'IP: ' + status[0] )
 
     # Connect to MQTT broker
     client = mqtt.Client("pico")

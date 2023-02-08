@@ -12,12 +12,12 @@ from umqtt.simple import MQTTClient
 # 147.228.121.4:80
 
 
-jmenowifi = "xxx,4GHz"
-heslowifi = "xxx"
+jmenowifi = "kokot"
+heslowifi = "minecraft69"
 
-#broker = 'broker.hivemq.com'
-broker = "147.228.121.4"
-port = 80
+broker = 'broker.hivemq.com'
+#broker = "147.228.121.4"
+port = 1883
 topic = "minecraftbaracek"
 
 def on_message(topic, msg):
@@ -61,23 +61,22 @@ def main():
         
         #print('connected')
         status = wlan.ifconfig()
-        print( 'Pripojeno k ' + jmenowifi + ' ' + 'IP: ' + status[0] )
+        print('Pripojeno k ' + jmenowifi + ' ' + 'IP: ' + status[0] )
 
 
 
     # Connect to MQTT broker
     client = MQTTClient("pico", broker, port)
+    client.set_callback(on_message)
     client.connect()
     print("Pripojeno k MQTT")
 
     client.publish(topic, b"Pico connected")
 
-    #client.subscribe(topic)
+    client.set_callback(on_message)
+    client.subscribe(topic)
 
-    #while True:
-     #   client.check_msg()
-
-        #if button.value():
-         #   stav = door_switch(stav)
+    while True:
+        client.check_msg()
 
 main()

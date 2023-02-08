@@ -1,12 +1,12 @@
 from umqtt.simple import MQTTClient
 
 # MQTT broker information
-SERVER = "147.228.121.4"
-PORT = 80
+broker = 'broker.hivemq.com'
+PORT = 1883
 
 
 # Create MQTT client
-client = MQTTClient("mates", SERVER, PORT)
+client = MQTTClient("mates", broker, PORT)
 
 # Connect to MQTT broker
 if client.connect():
@@ -18,7 +18,7 @@ else:
     sys.exit()
 
 # Publish a message
-if client.publish("topic", "message"):
+if client.publish("minecraftbaracek", "opendoor"):
     print("Successfully published message.")
 else:
     print("Failed to publish message.")

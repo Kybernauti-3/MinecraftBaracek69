@@ -13,9 +13,6 @@ if client.connect():
     print("Successfully connected to MQTT broker.")
 else:
     print("Failed to connect to MQTT broker.")
-    # Exit script
-    import sys
-    sys.exit()
 
 # Publish a message
 if client.publish("minecraftbaracek", "opendoor"):

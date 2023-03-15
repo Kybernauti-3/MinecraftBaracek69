@@ -1,4 +1,4 @@
 mqtt:
-  broker: tcp://147.228.121.4:80
+  broker: tcp://broker.hivemq.com:1883
   clientID: minecraftplugin
   topic: minecraftbaracek

@@ -43,4 +43,4 @@ else:
     print("Failed to connect to MQTT broker.")
 
 while True:
-    client.loop()
+    client.wait_msg()

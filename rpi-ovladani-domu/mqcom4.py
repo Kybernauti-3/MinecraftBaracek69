@@ -1,7 +1,6 @@
 import network
 import time
 from machine import Pin
-import uasyncio as asyncio
 import umqtt.simple as simple
 
 led = Pin("LED", Pin.OUT)

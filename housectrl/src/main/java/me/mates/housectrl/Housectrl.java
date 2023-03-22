@@ -1,6 +1,7 @@
 package me.mates.housectrl;
 
-import me.mates.housectrl.commands.svetlo;
+import me.mates.housectrl.commands.send;
+import me.mates.housectrl.events.button;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -8,49 +9,60 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import java.util.logging.Level;
+
 public final class Housectrl extends JavaPlugin {
-    MqttClient sampleClient = null;
-    private Housectrl plugin;
+    private MqttClient client;
+    private MQTT callback;
+    private String topic;
 
     @Override
     public void onEnable() {
-        plugin = this;
-
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
-
-        String broker       = getConfig().getString("mqtt.broker");
-        String clientId     = getConfig().getString("mqtt.clientID");
+        String broker = getConfig().getString("mqtt.broker");
+        String clientId = getConfig().getString("mqtt.clientID");
+        topic = getConfig().getString("mqtt.topic");
         try {
-            System.out.println("Connecting to broker: " + broker);
-            sampleClient = new MqttClient(broker, clientId, new MemoryPersistence());
+            getLogger().log(Level.INFO,"Connecting to broker: " + broker);
+            client = new MqttClient(broker, clientId, new MemoryPersistence());
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setCleanSession(true);
-            sampleClient.connect(connOpts);
-            System.out.println("Connected");
+            client.connect(connOpts);
+            callback = new MQTT(this);
+            client.setCallback(callback);
+            client.subscribe(topic, 1);
+            getLogger().log(Level.INFO,"Connected");
         } catch (MqttException me) {
             Bukkit.getPluginManager().disablePlugin(this);
             me.printStackTrace();
         }
 
-        new MQTT(this);
+        getCommand("send").setExecutor(new send(this));
 
-        getCommand("svetlo").setExecutor(new svetlo());
-
+        Bukkit.getPluginManager().registerEvents(new button(this), this);
     }
 
     @Override
     public void onDisable() {
         try {
-            sampleClient.disconnect();
+            client.disconnect();
         } catch (MqttException me) {
             me.printStackTrace();
         }
-        System.out.println("Disconnected");
+        getLogger().log(Level.INFO,"Disconnected");
     }
 
     public MqttClient getClient() {
-        return sampleClient;
+        return client;
+    }
+
+    public MQTT getCallback() {
+        return callback;
+    }
+
+    public String getTopic() {
+        return topic;
     }
 }

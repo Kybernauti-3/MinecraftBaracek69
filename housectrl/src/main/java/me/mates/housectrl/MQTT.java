@@ -1,33 +1,39 @@
 package me.mates.housectrl;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.eclipse.paho.client.mqttv3.*;
 
-public class MQTT implements MqttCallback {
-    private static Housectrl plugin;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-    public MQTT(Housectrl housectrl) {
-        plugin = housectrl;
+public class MQTT implements MqttCallback {
+    private final Housectrl plugin;
+    private final MqttClient client;
+    private final World world = Bukkit.getWorld("World");
+    private final Logger logger;
+
+    public MQTT(Housectrl plugin) {
+        this.plugin = plugin;
+        logger = plugin.getLogger();
+        client = plugin.getClient();
     }
 
-    public static void SEND(String content) {
+    public void SEND(String content) {
         if (content == null) return;
-
-        String topic = plugin.getConfig().getString("mqtt.topic");
-
         try {
-            MqttClient sampleClient = plugin.getClient();
-            System.out.println("Publishing message: "+content);
+            logger.log(Level.INFO,"Publishing message: " + content);
             MqttMessage message = new MqttMessage(content.getBytes());
             message.setQos(2);
-            sampleClient.publish(topic, message);
-            System.out.println("Message published");
-        } catch(MqttException me) {
-            System.out.println("reason "+me.getReasonCode());
-            System.out.println("msg "+me.getMessage());
-            System.out.println("loc "+me.getLocalizedMessage());
-            System.out.println("cause "+me.getCause());
-            System.out.println("excep "+me);
+            client.publish(plugin.getTopic(), message);
+            logger.log(Level.INFO,"Message published");
+        } catch (MqttException me) {
+            logger.log(Level.INFO,"reason " + me.getReasonCode());
+            logger.log(Level.INFO,"msg " + me.getMessage());
+            logger.log(Level.INFO,"loc " + me.getLocalizedMessage());
+            logger.log(Level.INFO,"cause " + me.getCause());
+            logger.log(Level.INFO,"excep " + me);
             me.printStackTrace();
         }
     }
@@ -39,12 +45,24 @@ public class MQTT implements MqttCallback {
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
-        System.out.println("topic " + topic);
-        System.out.println("message " + message);
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            switch (message.toString().toLowerCase()) {
+                case "opendoor" -> world.getBlockAt(1,1,-1).setType(Material.REDSTONE_TORCH);
+                case "closedoor" -> world.getBlockAt(1,1,-1).setType(Material.AIR);
+                case "svetloon" -> world.getBlockAt(1,7,1).setType(Material.REDSTONE_BLOCK);
+                case "svetlooff" -> world.getBlockAt(1,7,1).setType(Material.AIR);
+
+                default -> {
+                }
+            }
+        });
+
+        logger.log(Level.INFO,"topic " + topic);
+        logger.log(Level.INFO,"message " + message);
     }
 
     @Override
     public void deliveryComplete(IMqttDeliveryToken token) {
-        System.out.println("token" + token);
+        logger.log(Level.INFO,"token" + token);
     }
 }

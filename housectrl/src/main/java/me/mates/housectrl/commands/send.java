@@ -1,7 +1,6 @@
 package me.mates.housectrl.commands;
 
 import me.mates.housectrl.Housectrl;
-import me.mates.housectrl.MQTT;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,11 +10,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class svetlo implements CommandExecutor, TabExecutor {
+public class send implements CommandExecutor, TabExecutor {
+    private final Housectrl plugin;
+    public send(Housectrl plugin) {
+        this.plugin = plugin;
+    }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 1) {
-            MQTT.SEND(args[0]);
+            plugin.getCallback().SEND(args[0]);
             return true;
         }
         System.out.println("provide args pls");

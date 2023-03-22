@@ -1,3 +1,5 @@
+# boot.py -- run on boot-up
+
 ssid = "D31-lab"
 key = "IoT.SPSE.lab22"
 

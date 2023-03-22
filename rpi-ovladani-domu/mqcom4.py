@@ -1,28 +1,26 @@
 import network
 import time
+import ubinascii
 from machine import Pin
-import umqtt.simple as simple
+import umqtt as simple
 
-led = Pin("LED", Pin.OUT)
-led.value(1)
-led.value(0)
-
-jmenowifi = "D31-lab"
-heslowifi = "IoT.SPSE.lab22"
+#jmenowifi = "D31-lab"
+#heslowifi = "IoT.SPSE.lab22"
 
 broker = "broker.hivemq.com"
 port = 1883
 topic = "minecraftbaracek"
 
-wlan = network.WLAN(network.STA_IF)
+'''
+wlan = network.WLAN(network.STA_IF) (ale podle mě to není takovej problém, dá se to umt :D )
 wlan.active(True)
-wlan.connect(jmenowifi, heslowifi)
+wlan.connect(jmenowifi, heslowifi) (ale musíš použít mýdlo)
 
 while not wlan.isconnected():
     time.sleep(1)
 
 print("Connected to {} IP: {}".format(jmenowifi, wlan.ifconfig()[0]))
-
+'''
 async def on_message(topic, msg):
     print("Received message on topic: {}, with payload: {}".format(topic, msg))
     if msg == b"opendoor":
@@ -31,7 +29,7 @@ async def on_message(topic, msg):
         print("lol")
 
 
-client = simple.MQTTClient("picomqttclient", broker, port=port)
+client = simple.MQTTClient(ubinascii.hexlify(machine.unique_id()), broker, port)
 
 if client.connect():
     print("Successfully connected to MQTT broker.")

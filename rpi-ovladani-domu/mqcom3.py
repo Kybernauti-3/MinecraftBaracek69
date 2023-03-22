@@ -1,43 +1,37 @@
+import time
+import ubinascii
+import machine
+from umqtt.simple import MQTTClient
+import random
 
-from machine import Pin
-import uasyncio as asyncio
-from mqtt_as import MQTTClient, config
+# Default MQTT server to connect to
 
-led = Pin("LED", Pin.OUT)
-led.value(1)
-led.value(0)
 
-jmenowifi = "kokot"
-heslowifi = "minecraft69"
+SERVER = "broker.hivemq.com"
+CLIENT_ID = ubinascii.hexlify(machine.unique_id())
+TOPIC = "minecraftbaracek"
 
-broker = "broker.hivemq.com"
-port = 1883
-topic = "minecraftbaracek"
+def reset():
+    print("Resetting...")
+    time.sleep(5)
+    machine.reset()
+    
+def main():
+    mqttClient = MQTTClient(CLIENT_ID, SERVER, keepalive=60)
+    mqttClient.connect()
+    print(f"Connected to MQTT  Broker :: {SERVER}")
 
-config['server'] = broker
-config['port'] = port
-config['ssid'] = jmenowifi
-config['wifi_pw'] = heslowifi
-
-async def on_message(topic, msg):
-    print("Received message on topic: {}, with payload: {}".format(topic, msg))
-    if msg == b"opendoor":
-        print("xd")
-    elif msg == b"closedoor":
-        print("lol")
-
-async def main(client):
-   
-
-    # Connect to MQTT broker
-    await client.connect()
-    print("Connected to MQTT")
-
-    await client.publish(topic, b"Pico connected")
-    await client.subscribe(topic, on_message)
-
-client = MQTTClient(config)
-try:
-    asyncio.run(main(client))
-finally:
-    client.close()
+    while True:
+        random_temp = random.randint(20, 50)
+        print(f"Publishing temperature :: {random_temp}")
+        mqttClient.publish(TOPIC, str(random_temp).encode())
+        time.sleep(3)
+    mqttClient.disconnect()
+    
+    
+if __name__ == "__main__":
+    try:
+        main()
+    except OSError as e:
+        print("Error: " + str(e))
+        reset()

@@ -1,8 +1,7 @@
 import network
 import time
-import ubinascii
 from machine import Pin
-import umqtt as simple
+import umqtt.simple.py as simple
 
 #jmenowifi = "D31-lab"
 #heslowifi = "IoT.SPSE.lab22"
@@ -29,7 +28,7 @@ async def on_message(topic, msg):
         print("lol")
 
 
-client = simple.MQTTClient(ubinascii.hexlify(machine.unique_id()), broker, port)
+client = simple.MQTTClient("picomqttclient", broker, port)
 
 if client.connect():
     print("Successfully connected to MQTT broker.")

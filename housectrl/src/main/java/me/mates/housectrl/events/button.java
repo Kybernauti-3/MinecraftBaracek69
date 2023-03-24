@@ -36,5 +36,17 @@ public class button implements Listener {
 
             e.setCancelled(true);
         }
+        if (Objects.equals(clicked.getLocation(), new Location(world, 1, 5, 2))) {
+            Block block = world.getBlockAt(1,7,1);
+            if (block.getType().equals(Material.REDSTONE_BLOCK)) {
+                plugin.getCallback().SEND("svetlooff");
+            }
+            if (block.getType().equals(Material.AIR)) {
+                plugin.getCallback().SEND("svetloon");
+            }
+
+            e.setCancelled(true);
+        }
+
     }
 }

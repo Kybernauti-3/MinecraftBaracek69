@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,8 +18,12 @@ public class send implements CommandExecutor, TabExecutor {
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
+        Player player = (Player) sender;
+
         if (args.length == 1) {
             plugin.getCallback().SEND(args[0]);
+            player.sendMessage("Posilam zpravu:" + args[0]);
             return true;
         }
         System.out.println("provide args pls");

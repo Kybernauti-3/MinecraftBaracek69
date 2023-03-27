@@ -63,6 +63,6 @@ public class MQTT implements MqttCallback {
 
     @Override
     public void deliveryComplete(IMqttDeliveryToken token) {
-        logger.log(Level.INFO,"token" + token);
+       // logger.log(Level.INFO,"token" + token);
     }
 }

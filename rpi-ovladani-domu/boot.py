@@ -15,6 +15,9 @@ gc.collect()
 
 ssid = "Jirankovi_O2_2,4GHz"
 password = "jirankovi7475"
+#ssid = "D31-lab"
+#password = "IoT.SPSE.lab22"
+
 mqtt_server = '147.228.121.4'
 #EXAMPLE IP ADDRESS
 #mqtt_server = '192.168.1.144'

@@ -23,7 +23,7 @@ public class send implements CommandExecutor, TabExecutor {
 
         if (args.length == 1) {
             plugin.getCallback().SEND(args[0]);
-            player.sendMessage("Posilam zpravu:" + args[0]);
+            player.sendMessage("Posilam zpravu: " + args[0]);
             return true;
         }
         System.out.println("provide args pls");

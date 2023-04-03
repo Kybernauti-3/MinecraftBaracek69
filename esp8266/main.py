@@ -1,17 +1,34 @@
 # main.py -- put your code here!
 
-
-print('jsem v mainu')
 import time
-print('spim 5s')
+print('waiting 5s...')
 time.sleep(5)
-print('vyspano')
 
 
-from machine import Pin
-blue = Pin(5, Pin.OUT)
+from machine import Pin, PWM
+red = Pin(5, Pin.OUT)
 green = Pin(4, Pin.OUT)
-red = Pin(2, Pin.OUT)
+blue = Pin(2, Pin.OUT)
+
+tlacitko = Pin(9, Pin.IN, Pin.PULL_UP)
+stav = 0
+
+servo = PWM(Pin(13),freq=50)
+
+def dvere_otevrit():
+  print("pohyb servem 1")
+  servo.duty(90)
+
+def dvere_zavrit():
+  print("pohyb servem 2")
+  servo.duty(40)
+
+def door_switch(stav):
+    if(stav == 1):
+      client.publish(topic_pub, b'closedoor')
+    else:
+      client.publish(topic_pub, b'opendoor')
+    return not stav
 
 def rozni():
   blue.value(1)
@@ -31,6 +48,10 @@ def sub_cb(topic, msg):
   if topic == b'minecraftbaracek' and msg == b'svetlooff':
     print('Svetlo vypnute')
     zhasni()
+  if topic == b'minecraftbaracek' and msg == b'opendoor':
+    dvere_otevrit()
+  if topic == b'minecraftbaracek' and msg == b'closedoor':
+    dvere_zavrit()
 
 def connect_and_subscribe():
   global client_id, mqtt_server, topic_sub, topic_pub
@@ -56,5 +77,11 @@ except OSError as e:
 while True:
   try:
     client.check_msg()
+    if not tlacitko.value():
+      stav = door_switch(stav)
+      time.sleep(0.1)
+      while not tlacitko.value():
+        pass
+    
   except OSError as e:
     restart_and_reconnect()

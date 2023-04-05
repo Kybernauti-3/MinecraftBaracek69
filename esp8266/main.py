@@ -6,7 +6,7 @@ time.sleep(5)
 
 
 from machine import Pin, PWM
-red = Pin(5, Pin.OUT)
+red = Pin(14, Pin.OUT)
 green = Pin(4, Pin.OUT)
 blue = Pin(2, Pin.OUT)
 

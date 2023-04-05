@@ -1,8 +1,8 @@
 # main.py -- put your code here!
 
 import time
-print('waiting 5s...')
-time.sleep(5)
+print('waiting 2s...')
+time.sleep(2)
 
 
 from machine import Pin, PWM
@@ -17,7 +17,7 @@ servo = PWM(Pin(13),freq=50)
 
 def dvere_otevrit():
   print("pohyb servem 1")
-  servo.duty(90)
+  servo.duty(80)
 
 def dvere_zavrit():
   print("pohyb servem 2")

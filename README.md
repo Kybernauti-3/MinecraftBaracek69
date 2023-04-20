@@ -1,7 +1,7 @@
 # MinecraftBaracek69
 Collaborant: Z4CK444
 
-V tomto projektu spojujeme RPi se servem, tlačítkem a ledkama
+V tomto projektu propojujeme Minecraft domeček pomocí MQTT a ESP8266 serveru s jeho reálnou verzí
 
 ## Zdroje
 

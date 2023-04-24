@@ -19,14 +19,14 @@ def connect_wifi():
     station = network.WLAN(network.STA_IF)
     station.active(True)
     while True:
-        user_input = input("\n[1] - wifi ve skole\n[2] - wifi mates home\n[3] - neco jineho\n")
+        user_input = input("\n[1] - wifi ve skole\n[2] - wifi hotspot\n[3] - neco jineho\n")
         if user_input == '1':
             ssid = "D31-lab"
             password = "IoT.SPSE.lab22"
             break
         if user_input == '2':
-            ssid = "Jirankovi_O2_2,4GHz"
-            password = "jirankovi7475"
+            ssid = "kokos"
+            password = "minecraft69"
             break
         elif user_input == '3':
             ssid = input("Enter SSID: ")

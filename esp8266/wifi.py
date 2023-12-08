@@ -1,5 +1,5 @@
-ssid = "Jirankovi_O2_2,4GHz"
-password = "jirankovi7475"
+ssid = ""
+password = ""
 
 
 def do_connect():
